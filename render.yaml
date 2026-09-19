@@ -1,0 +1,29 @@
+services:
+  # Backend API Web Service
+  - type: web
+    name: quantlab-backend
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.8
+      - key: DATABASE_URL
+        value: sqlite:///./quantlab.db
+      - key: SECRET_KEY
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: "*"
+
+  # Frontend Static Site
+  - type: web
+    name: quantlab-frontend
+    env: static
+    buildCommand: npm --prefix frontend install && npm --prefix frontend run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: quantlab-backend
+          property: host

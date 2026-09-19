@@ -1,0 +1,434 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Theme Tokens - Dark Navy Lab Aesthetic */
+  --bg-primary: #050b18;
+  --bg-secondary: rgba(6, 14, 32, 0.50);
+  --bg-tertiary: rgba(10, 22, 50, 0.55);
+  --bg-card: rgba(6, 14, 32, 0.32);          /* Translucent cards — video shimmer shows through */
+  --bg-card-hover: rgba(10, 24, 56, 0.45);
+  --border-color: rgba(0, 240, 255, 0.15);
+  --border-glow: rgba(0, 240, 255, 0.30);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  /* Semantic Financial Accents */
+  --accent-cyan: #00f0ff;                    /* 🔵 Cyan = Data / Analytics / Indicators */
+  --accent-cyan-glow: rgba(0, 240, 255, 0.35);
+  --accent-green: #00df8f;                   /* 🟢 Emerald = Profit / Positive Performance */
+  --accent-green-glow: rgba(0, 223, 143, 0.35);
+  --accent-red: #ff3366;                     /* 🔴 Red = Loss / Negative Performance */
+  --accent-red-glow: rgba(255, 51, 102, 0.35);
+  --accent-purple: #a855f7;                  /* 🟣 Purple = AI & Advanced ML Intelligence */
+  --accent-purple-glow: rgba(168, 85, 247, 0.35);
+  --accent-amber: #f59e0b;
+  --accent-amber-glow: rgba(245, 158, 11, 0.35);
+
+  --shadow-card: 0 8px 32px 0 rgba(0, 0, 0, 0.28);
+  --backdrop-blur: blur(10px);
+}
+
+.light {
+  --bg-primary: #f4f6fb;
+  --bg-secondary: rgba(255, 255, 255, 0.45);
+  --bg-tertiary: rgba(240, 244, 252, 0.50);
+  --bg-card: rgba(255, 255, 255, 0.36);
+  --bg-card-hover: rgba(255, 255, 255, 0.55);
+  --border-color: rgba(0, 0, 0, 0.1);
+  --border-glow: rgba(2, 132, 199, 0.3);
+
+  /* Deep dark font colors for Light mode */
+  --text-primary: #050811;
+  --text-secondary: #1e293b;
+  --text-muted: #475569;
+
+  --accent-cyan: #0284c7;
+  --accent-cyan-glow: rgba(2, 132, 199, 0.25);
+  --accent-green: #059669;
+  --accent-green-glow: rgba(5, 150, 105, 0.25);
+  --accent-red: #e11d48;
+  --accent-red-glow: rgba(225, 29, 72, 0.25);
+  --accent-purple: #7c3aed;
+  --accent-purple-glow: rgba(124, 58, 237, 0.25);
+  --accent-amber: #d97706;
+  --accent-amber-glow: rgba(217, 119, 6, 0.25);
+
+  --shadow-card: 0 8px 24px 0 rgba(0, 0, 0, 0.07);
+  --backdrop-blur: blur(14px);
+
+  color-scheme: light;
+  color: #050811;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide native browser password reveal button (Edge / Chromium duplicate eye icon) */
+input::-ms-reveal,
+input::-ms-clear {
+  display: none !important;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphic Cyber Panels */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-panel-hover:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-glow);
+  box-shadow: 0 12px 36px 0 var(--border-glow);
+}
+
+/* Glowing Neon Buttons */
+.btn-cyan {
+  background: linear-gradient(135deg, var(--accent-cyan), #00a8ff);
+  color: #030712;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 0 20px var(--accent-cyan-glow);
+  transition: all 0.2s ease;
+}
+.btn-cyan:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 28px var(--accent-cyan);
+}
+
+.btn-purple {
+  background: linear-gradient(135deg, var(--accent-purple), #7928ca);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 0 20px var(--accent-purple-glow);
+  transition: all 0.2s ease;
+}
+.btn-purple:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 28px var(--accent-purple);
+}
+
+.btn-secondary {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 9px 18px;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+  border-color: var(--text-secondary);
+  background: var(--bg-card-hover);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.badge-cyan { background: rgba(0, 240, 255, 0.12); color: var(--accent-cyan); border: 1px solid rgba(0, 240, 255, 0.3); }
+.badge-green { background: rgba(0, 223, 143, 0.12); color: var(--accent-green); border: 1px solid rgba(0, 223, 143, 0.3); }
+.badge-red { background: rgba(255, 51, 102, 0.12); color: var(--accent-red); border: 1px solid rgba(255, 51, 102, 0.3); }
+.badge-amber { background: rgba(245, 158, 11, 0.12); color: var(--accent-amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+.badge-purple { background: rgba(157, 78, 221, 0.12); color: var(--accent-purple); border: 1px solid rgba(157, 78, 221, 0.3); }
+
+/* Financial Code / Numbers */
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Cybernetic Grid Background */
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
+}
+
+/* Shimmer Loader */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-card-hover) 50%, var(--bg-tertiary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: 8px;
+}
+
+/* Pulsing radar dot */
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(0.9); opacity: 0; }
+}
+.pulse-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent-green);
+}
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-green);
+  animation: pulse-ring 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* Reduced Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Asset Row Hover Effect */
+.asset-row-hover:hover {
+  border-color: rgba(0, 240, 255, 0.25) !important;
+  background: var(--bg-card-hover) !important;
+  box-shadow: 0 4px 16px rgba(0, 240, 255, 0.08);
+}
+
+/* Responsive Utility */
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+/* Green Action Button */
+.btn-green {
+  background: linear-gradient(135deg, var(--accent-green), #00b37a);
+  color: #030712;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 0 20px var(--accent-green-glow);
+  transition: all 0.2s ease;
+}
+.btn-green:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 28px var(--accent-green);
+}
+
+/* Danger / Red Action Button */
+.btn-red {
+  background: linear-gradient(135deg, var(--accent-red), #cc0033);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 0 20px var(--accent-red-glow);
+  transition: all 0.2s ease;
+}
+.btn-red:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 28px var(--accent-red);
+}
+
+/* Ticker animation for price scrolling in Navbar */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-scroll {
+  animation: ticker-scroll 35s linear infinite;
+  white-space: nowrap;
+}
+.ticker-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Focus ring for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   LIGHT MODE TYPOGRAPHY & CONTRAST OVERRIDES
+   ============================================================ */
+.light,
+.light body,
+.light main {
+  color: #050811 !important;
+}
+
+.light h1,
+.light h2,
+.light h3,
+.light h4,
+.light h5,
+.light h6 {
+  color: #050811 !important;
+}
+
+.light p {
+  color: #1e293b !important;
+}
+
+.light label {
+  color: #1e293b !important;
+}
+
+.light strong,
+.light b {
+  color: #050811 !important;
+}
+
+.light span {
+  color: inherit;
+}
+
+.light .mono {
+  color: #050811 !important;
+}
+
+.light input,
+.light select,
+.light textarea {
+  color: #050811 !important;
+  background-color: rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(0, 0, 0, 0.16) !important;
+}
+
+.light input::placeholder,
+.light textarea::placeholder {
+  color: #64748b !important;
+}
+
+.light .btn-secondary {
+  background: rgba(235, 241, 250, 0.88) !important;
+  color: #050811 !important;
+  border-color: rgba(0, 0, 0, 0.14) !important;
+}
+.light .btn-secondary:hover {
+  background: #ffffff !important;
+  border-color: #0284c7 !important;
+}
+
+.light aside.sidebar {
+  background: rgba(255, 255, 255, 0.78) !important;
+  backdrop-filter: blur(14px) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.light aside.sidebar span,
+.light aside.sidebar div {
+  color: #1e293b !important;
+}
+
+.light aside.sidebar button.active {
+  background: rgba(2, 132, 199, 0.12) !important;
+  color: #0284c7 !important;
+  font-weight: 700 !important;
+}
+
+.light nav,
+.light header {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(14px) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.light [style*="rgba(13, 20, 35"] {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(230, 238, 252, 0.75) 100%) !important;
+}
+
+.light .video-overlay {
+  background: radial-gradient(ellipse at center, rgba(244, 246, 251, 0.22) 0%, rgba(244, 246, 251, 0.6) 100%) !important;
+}
+
+.light video {
+  opacity: 0.38 !important;
+  filter: brightness(1.05) contrast(1.05) !important;
+}
+
+
