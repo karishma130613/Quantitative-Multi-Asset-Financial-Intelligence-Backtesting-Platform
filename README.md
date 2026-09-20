@@ -159,7 +159,7 @@ The platform can use a relational database such as:
 
 ## 🌐 Deployed Link
 
-https://quantitative-multi-asset-financial-xlih.onrender.com
+https://quantitative-multi-asset-financial-c3s5.onrender.com
 
 ## 👩‍💻 Developed By
 
